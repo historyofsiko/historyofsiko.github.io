@@ -2,262 +2,138 @@
 <html lang="or">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ସିକୋ ଇତିହାସ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ସିକୋ ଇତିହାସ - ଐତିହ୍ୟ ପୁସ୍ତକ ଓ ଗ୍ୟାଲେରୀ</title>
     
-    <!-- Baloo Bhaina 2 (Reading Font) -->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400..800&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <style>
-        /* --- FONT CONFIGURATION --- */
-        @font-face {
-            font-family: 'AchyutaBold';
-            src: url('Achyuta/Odia Achyuta Bold.TTF') format('truetype');
-            font-weight: bold;
-        }
-
-        :root {
-            --maroon: #800000;
-            --gold: #D4AF37;
-            --bg: #FFFDF5;
-            --header-h: 70px;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Baloo Bhaina 2', cursive;
-            background-color: var(--bg);
-            color: #2C1810;
-            line-height: 1.8;
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        section { scroll-margin-top: calc(var(--header-h) + 15px); padding: 20px 0; }
-
-        /* --- NAVIGATION --- */
-        header {
-            position: fixed; top: 0; width: 100%; height: var(--header-h);
-            background: #ffffff; z-index: 3000;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; border-bottom: 3px solid var(--maroon);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .logo { font-family: 'AchyutaBold', sans-serif; font-size: 1.8rem; color: var(--maroon); }
-
-        .nav-links { display: flex; list-style: none; gap: 15px; }
-        .nav-links a {
-            text-decoration: none; color: #333; font-weight: 700;
-            padding: 8px 12px; font-size: 1.1rem; transition: 0.3s;
-        }
-        .nav-links a:hover { color: var(--maroon); }
-
-        .menu-btn {
-            display: none; width: 40px; height: 40px; border-radius: 8px;
-            background: var(--bg); color: var(--maroon);
-            justify-content: center; align-items: center; cursor: pointer;
-            border: 1px solid rgba(128, 0, 0, 0.1); font-size: 1.2rem;
-        }
-
-        /* --- HERO SECTION: PHOTO LOCK (2047 x 901) --- */
-        .hero {
-            margin-top: var(--header-h); width: 100%; background: #fcf6e8;
-            display: flex; justify-content: center; align-items: center;
-            overflow: hidden; border-bottom: 5px solid var(--gold);
-            line-height: 0;
-        }
-        .hero img {
-            width: 100%; height: auto;
-            aspect-ratio: 2047 / 901 !important; 
-            object-fit: contain; display: block;
-        }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px 15px; }
-
-        /* --- SECTION HEADERS --- */
-        .section-title { text-align: center; margin-bottom: 30px; }
-        .section-title h2 { 
-            font-family: 'AchyutaBold', sans-serif;
-            font-size: 2.8rem; color: var(--maroon); 
-            border-bottom: 4px solid var(--gold);
-            display: inline-block; padding: 5px 15px;
-            line-height: 1.3;
-        }
-
-        /* --- CATEGORY HEADER --- */
-        .cat-title {
-            font-family: 'AchyutaBold', sans-serif; font-size: 2rem; color: var(--maroon);
-            margin: 40px 0 20px 0; display: flex; align-items: center; gap: 12px;
-            background: rgba(212, 175, 55, 0.1); padding: 10px 15px; border-radius: 10px;
-            border-left: 5px solid var(--maroon);
-            line-height: 1.2;
-        }
-
-        /* --- CARDS & GALLERY GRID --- */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-
-        .photo-card {
-            background: #fff; border-radius: 20px; overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06); border: 1px solid #eee;
-            transition: 0.4s; display: flex; flex-direction: column;
-        }
-        .photo-card:hover { transform: translateY(-8px); border-color: var(--gold); }
-
-        .img-box { width: 100%; height: 230px; background: #f4f4f4; display: flex; align-items: center; justify-content: center; }
-        .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-        .photo-info { padding: 15px; text-align: center; }
-        .photo-info h4 { font-family: 'Baloo Bhaina 2'; font-size: 1.35rem; color: var(--maroon); margin-bottom: 5px; }
-        .photo-info p { font-size: 1rem; color: #555; line-height: 1.5; }
-
-        /* --- MOBILE ADJUSTMENTS --- */
-        @media (max-width: 768px) {
-            .menu-btn { display: flex; }
-
-            /* Mobile Pop-up Menu */
-            .nav-links {
-                position: absolute; top: 75px; right: 15px; background: white;
-                width: 170px; flex-direction: column; border-radius: 12px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 8px;
-                display: none; transform: scale(0.9); opacity: 0;
-                transition: transform 0.2s ease, opacity 0.2s ease; z-index: 4000;
-            }
-            .nav-links.active { display: flex; transform: scale(1); opacity: 1; }
-            .nav-links a { display: block; padding: 10px; text-align: center; border-bottom: 1px solid #f0f0f0; }
-            .nav-links li:last-child a { border-bottom: none; }
-
-            /* FONT SIZE ADJUSTMENT FOR MOBILE */
-            .section-title h2 { font-size: 1.7rem !important; padding: 5px 10px; }
-            .cat-title { font-size: 1.4rem !important; padding: 8px 12px; }
-            .logo { font-size: 1.4rem; }
-            
-            /* Keeping Photo Lock on Mobile */
-            .hero img { aspect-ratio: 2047 / 901 !important; height: auto !important; }
-            
-            .photo-card { margin-bottom: 10px; }
-        }
-
-        footer { padding: 40px; text-align: center; background: var(--maroon); color: #fff; margin-top: 50px; }
-    </style>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Oriya:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">ସିକୋ ଇତିହାସ</div>
-        <div class="menu-btn" onclick="toggleMenu()" id="menuBtn"><i class="fa-solid fa-bars"></i></div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home" onclick="toggleMenu()">ମୁଖ୍ୟ ପୃଷ୍ଠା</a></li>
-            <li><a href="#history" onclick="toggleMenu()">ଇତିହାସ</a></li>
-            <li><a href="#gallery" onclick="toggleMenu()">ଗ୍ୟାଲେରୀ</a></li>
-        </ul>
-    </header>
+    <!-- Scroll to Top -->
+    <button id="scrollToTop" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
 
-    <!-- PHOTO LOCK HERO -->
-    <section class="hero" id="home">
-        <img src="siko-hero.jpg" alt="ସିକୋ ଇତିହାସ ବ୍ୟାନର">
-    </section>
+    <!-- Audio for flip (Local file) -->
+    <audio id="flipSound" preload="auto">
+        <source src="flip.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <img src="siko-hero.jpg" alt="Siko Heritage Banner">
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-logo"><i class="fa-solid fa-landmark"></i> ସିକୋ ଇତିହାସ</a>
+        
+        <!-- Dark Mode Toggle Button -->
+        <div class="theme-switch-wrapper">
+            <button id="theme-toggle" title="Toggle Dark Mode">
+                <i id="theme-icon" class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+
+        <div class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#book-section" onclick="toggleMenu()"><i class="fa-solid fa-book-open"></i> ଐତିହ୍ୟ ବହି</a>
+            <a href="#gallery" onclick="toggleMenu()"><i class="fa-solid fa-images"></i> ଗ୍ୟାଲେରୀ</a>
+            <a href="#location" onclick="toggleMenu()"><i class="fa-solid fa-map-location-dot"></i> ମାନଚିତ୍ର</a>
+        </div>
+    </nav>
 
     <div class="container">
-        <!-- ଇତିହାସ Section -->
-        <section id="history" data-aos="fade-up">
-            <div class="section-title">
-                <h2>ପବିତ୍ର ଗାଥା</h2>
-            </div>
-            <div class="gallery-grid">
-                <div class="photo-card" style="padding: 25px; border-top: 6px solid var(--maroon); text-align: center;">
-                    <i class="fa-solid fa-fort-awesome" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 10px;"></i>
-                    <h3 style="font-family: 'AchyutaBold'; font-size: 1.6rem; color: var(--maroon); margin-bottom: 10px;">ଐତିହାସିକ ଗଡ଼</h3>
-                    <p style="font-family: 'Baloo Bhaina 2', cursive !important; font-size: 1.1rem;">୧୮୧୭ ମସିହାରେ ବ୍ରିଟିଶ ଶାସନ ବିରୁଦ୍ଧରେ ସିକୋର ପାଇକମାନେ ବିଜୟର ହୁଙ୍କାର ଛାଡ଼ିଥିଲେ।</p>
+        
+        <!-- 3D BOOK SECTION -->
+        <section id="book-section" class="vintage-card">
+            <h2><i class="fa-solid fa-book-journal-whills"></i> ସିକୋ ଇତିହାସ ପୁସ୍ତକ</h2>
+            <div class="book-section-wrapper">
+                <div class="scene">
+                    <div class="book" id="book">
+                        <!-- Pages generated by script.js -->
+                    </div>
                 </div>
-                <div class="photo-card" style="padding: 25px; border-top: 6px solid var(--maroon); text-align: center;">
-                    <i class="fa-solid fa-om" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 10px;"></i>
-                    <h3 style="font-family: 'AchyutaBold'; font-size: 1.6rem; color: var(--maroon); margin-bottom: 10px;">ଆମ ସଂସ୍କୃତି</h3>
-                    <p style="font-family: 'Baloo Bhaina 2', cursive !important; font-size: 1.1rem;">ଗାଁର ପ୍ରାଚୀନ ମନ୍ଦିର, ପାରମ୍ପରିକ ପର୍ବପର୍ବାଣୀ ଏବଂ ଏକତା ହିଁ ଆମର ଗୌରବ।</p>
+                
+                <div class="book-controls">
+                    <button id="prevBtn">← Previous</button>
+                    <div class="page-counter">Page <span id="pageNum">0</span> / 300</div>
+                    <button id="nextBtn">Next →</button>
                 </div>
             </div>
         </section>
 
-        <!-- Dynamic Categorized Gallery -->
-        <section id="gallery">
-            <div class="section-title" data-aos="fade-up">
-                <h2>ଗ୍ରାମ୍ୟ ଫଟୋ ଗ୍ୟାଲେରୀ</h2>
+        <!-- GALLERY SECTION -->
+        <section id="gallery" class="vintage-card">
+            <h2><i class="fa-solid fa-image"></i> ସିକୋ ଗ୍ୟାଲେରୀ</h2>
+
+            <div class="category-header">ପବିତ୍ର ଶିବ ପୀଠ ଓ ମନ୍ଦିର ସମୂହ</div>
+            <div class="gallery-grid">
+                <div class="photo-card" onclick="openLightbox(this)">
+                    <div class="img-box"><img src="photo1.jpg" alt="ବାବା ତାରେଶ୍ୱର"></div>
+                    <div class="photo-info"><h3>ବାବା ତାରେଶ୍ୱର ଦେବ</h3></div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(this)">
+                    <div class="img-box"><img src="photo2.jpg" alt="ବାବା ଚନ୍ଦ୍ରଶେଖର"></div>
+                    <div class="photo-info"><h3>ବାବା ଚନ୍ଦ୍ରଶେଖର ଦେବ</h3></div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(this)">
+                    <div class="img-box"><img src="photo3.jpg" alt="ବାବା ବାଙ୍କେଶ୍ୱର"></div>
+                    <div class="photo-info"><h3>ବାବା ବାଙ୍କେଶ୍ୱର ଦେବ</h3></div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(this)">
+                    <div class="img-box"><img src="photo4.jpg" alt="ବାବା ନିଧିଶ୍ୱର"></div>
+                    <div class="photo-info"><h3>ବାବା ନିଧିଶ୍ୱର ଦେବ</h3></div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(this)">
+                    <div class="img-box"><img src="photo5.jpg" alt="ବାବା ବିଶ୍ୱନାଥ"></div>
+                    <div class="photo-info"><h3>ବାବା ବିଶ୍ୱନାଥ ଦେବ</h3></div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(this)">
+                    <div class="img-box"><img src="temple1.jpg" alt="ପ୍ରାଚୀନ ମନ୍ଦିର"></div>
+                    <div class="photo-info"><h3>ପ୍ରାଚୀନ ମନ୍ଦିର ବେଢ଼ା</h3></div>
+                </div>
             </div>
-            
-            <div id="deitySection"></div>
-            <div id="templeSection"></div>
-            <div id="festivalSection"></div>
-            <div id="otherSection"></div>
+
+            <div class="category-header">ପର୍ବପର୍ବାଣୀ ଓ ଗ୍ରାମ୍ୟ ଜୀବନ</div>
+            <div class="gallery-grid">
+                <div class="photo-card" onclick="openLightbox(this)">
+                    <div class="img-box"><img src="parba1.jpg" alt="ଗ୍ରାମର ପର୍ବ"></div>
+                    <div class="photo-info"><h3>ପ୍ରସିଦ୍ଧ ପର୍ବପର୍ବାଣୀ</h3></div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(this)">
+                    <div class="img-box"><img src="other1.jpg" alt="ଐତିହ୍ୟ ଫଟୋ"></div>
+                    <div class="photo-info"><h3>ସିକୋ ଐତିହ୍ୟ</h3></div>
+                </div>
+            </div>
         </section>
+
+        <!-- LOCATION SECTION -->
+        <section id="location" class="vintage-card">
+            <h2><i class="fa-solid fa-location-dot"></i> ସିକୋ ମାନଚିତ୍ର</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14991.884734428402!2d85.40756025222551!3d20.051649701826204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a18456b594e363f%3A0x9f701ca7ff63c8db!2sSiko%2C%20Odisha%20752038!5e0!3m2!1sen!2sin!4v1778501075876!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="caption"></div>
     </div>
 
     <footer>
-        <p style="font-family: 'AchyutaBold'; font-size: 1.4rem; color: var(--gold);">ସିକୋ ଇତିହାସ</p>
-        <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">&copy; ୨୦୨୪ ସମସ୍ତ ଅଧିକାର ସଂରକ୍ଷିତ</p>
+        <h3>ସିକୋ ଇତିହାସ ପରିଷଦ</h3>
+        <p>&copy; ୨୦୨୬ | ମୋ ଗାଁ, ମୋ ପରିଚୟ</p>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 800, once: true });
-
-        // Mobile Menu Logic
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            const icon = document.querySelector('#menuBtn i');
-            nav.classList.toggle('active');
-            
-            if(nav.classList.contains('active')) {
-                nav.style.display = "flex";
-                icon.classList.replace('fa-bars', 'fa-times');
-            } else {
-                setTimeout(() => { nav.style.display = "none"; }, 200);
-                icon.classList.replace('fa-times', 'fa-bars');
-            }
-        }
-
-        // --- DATA SECTION: UNLIMITED PHOTOS ---
-        const galleryData = {
-            deities: [
-                { title: "ବାବା ତାରେଶ୍ୱର ଦେବ", img: "photo1.jpg", desc: "ସିକୋର ପ୍ରାଚୀନ ଦେବତା" },
-                { title: "ବାବା ଚନ୍ଦ୍ରଶେଖର ଦେବ", img: "photo2.jpg", desc: "ଗ୍ରାମର ଏକ ପ୍ରସିଦ୍ଧ ପୀଠ" },
-                { title: "ବାବା ବାଙ୍କେଶ୍ଵର ଦେବ", img: "photo3.jpg", desc: "ବୀରତ୍ୱର ପ୍ରତୀକ" },
-                { title: "ବାବା ନିଧିଶ୍ୱର ଦେବ", img: "photo4.jpg", desc: "ପବିତ୍ର ଆରାଧ୍ୟ ଦେବତା" },
-                { title: "ବାବା ବିଶ୍ୱନାଥ ଦେବ", img: "photo5.jpg", desc: "ମୁଖ୍ୟ ଶିବ ପୀଠ" }
-            ],
-            temples: [
-                { title: "ପ୍ରାଚୀନ ମନ୍ଦିର", img: "temple1.jpg", desc: "ସିକୋର ଐତିହାସିକ କଳାକୃତି" }
-            ],
-            festivals: [
-                { title: "ରାମଲୀଳା", img: "parba1.jpg", desc: "ଗାଁରେ ହେଉଥିବା ପାରମ୍ପରିକ ନାଟକ" }
-            ],
-            others: [
-                { title: "ଗ୍ରାମ୍ୟ ଦୃଶ୍ୟ", img: "other1.jpg", desc: "ସିକୋର ପ୍ରାକୃତିକ ସୌନ୍ଦର୍ଯ୍ୟ" }
-            ]
-        };
-
-        function loadGallery(data, containerId, title, icon) {
-            const container = document.getElementById(containerId);
-            if (!container || data.length === 0) return;
-
-            let content = `<div class="cat-title" data-aos="fade-right"><i class="fa-solid ${icon}"></i> ${title}</div>`;
-            content += `<div class="gallery-grid">`;
-            data.forEach(item => {
-                content += `<div class="photo-card" data-aos="zoom-in"><div class="img-box"><img src="${item.img}" loading="lazy"></div><div class="photo-info"><h4>${item.title}</h4><p>${item.desc}</p></div></div>`;
-            });
-            content += `</div>`;
-            container.innerHTML = content;
-        }
-
-        loadGallery(galleryData.deities, 'deitySection', 'ଦେବାଦେବୀ', 'fa-sun');
-        loadGallery(galleryData.temples, 'templeSection', 'ମନ୍ଦିର', 'fa-place-of-worship');
-        loadGallery(galleryData.festivals, 'festivalSection', 'ପର୍ବ ପର୍ବାଣୀ', 'fa-om');
-        loadGallery(galleryData.others, 'otherSection', 'ଅନ୍ୟାନ୍ୟ', 'fa-camera-retro');
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
